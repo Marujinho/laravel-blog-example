@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 
+use App\Email;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +63,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
+        //Salva novo post
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content;
@@ -76,6 +78,11 @@ class PostController extends Controller
 
         $post->save();
 
+        //Envia o email para lista de emails do banco
+        $emails = Email::all();
+
+
+        //Redireciona para pagina principal
         return redirect()->route('posts.index')
             ->with('success', 'Post criado com sucesso!');
     }
