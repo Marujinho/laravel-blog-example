@@ -35,19 +35,20 @@
                     PartilheMKT
                 </a>
 
-                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                        @if(Auth::check())
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                    <a href='' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ route('posts.create') }}">Criar novo post</a></li>
-                                        <li><a href="{{route('posts.index')}}">Ver todos posts</a></li>
-                                    </ul>
-                                </li>                     
-                            </ul>
-                        @endif
-                 </div>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    @if(Auth::check())
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href='' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('posts.create') }}">Criar novo post</a></li>
+                                    <li><a href="{{route('posts.tableIndex')}}">Ver todos posts</a></li>
+                                    <li><a href="{{route('emails.index')}}">Ver Emails Cadastrados</a></li>
+                                </ul>
+                            </li>                     
+                        </ul>
+                    @endif
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -60,6 +61,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <form method="post" action="{{ route('emails.store') }}">
+                                @csrf
+                                <input type="email" name="email" class="form-control"  placeholder="quero receber notificação">
+                                <input type="submit" name="enviar" style="float: left" class="btn btn-info">
+                            </form>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

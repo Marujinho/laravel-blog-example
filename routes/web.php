@@ -28,7 +28,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/criar-novo-post', 'PostController@create')->name('posts.create');
 
+Route::get('/criar-novo-post', 'PostController@create')->name('posts.create');
+
 Route::get('/ver-todos-posts', 'PostController@index')->name('posts.index');
+
+Route::get('/ver-todos-meus-posts', 'PostController@tableIndex')->name('posts.tableIndex');
 
 Route::get('/ver-post/{id}', 'PostController@show')->name('posts.show');
 
@@ -42,6 +46,15 @@ Route::delete('/deletar-post/{id}', 'PostController@destroy')->name('posts.delet
 
 
 
+/*
+*
+*    EMAILS
+*
+*/
 
+
+Route::get('/ver-emails', 'EmailController@index')->name('emails.index');
+
+Route::post('/cadastrar-email', 'EmailController@store')->name('emails.store');
 
 // Route::get('/posts', 'PostController@list')->name('posts.list');

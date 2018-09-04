@@ -29,6 +29,20 @@ class PostController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function tableIndex()
+    {
+        $posts = Post::paginate(15);
+        
+        return view('posts/tableIndex', ['posts' => $posts]);
+    }
+
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
