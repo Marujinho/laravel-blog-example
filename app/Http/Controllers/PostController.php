@@ -6,6 +6,8 @@ use App\Post;
 
 use App\Email;
 
+use Mail;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -76,10 +78,26 @@ class PostController extends Controller
             $post->pictureThumb = $imageName;
         }
 
-        $post->save();
+        $paulinha = $post->save();
 
         //Envia o email para lista de emails do banco
         $emails = Email::all();
+
+        $data = [
+
+            'email'       => 'bd900cf51b-d7a254@inbox.mailtrap.io',
+            'subject'     => 'assunto doido aiii galerinhaaa',
+            'bodyMessage' => 'dohdashd phasd ahsd sahdpo sah',
+            'link'        => $post->id
+
+        ];
+
+        Mail::send('emails.news', $data, function($message) use ($data){
+
+            $message->from($data['email']);
+            $message->to($data['email']);
+            $message->subject($data['subject']);
+        });
 
 
         //Redireciona para pagina principal
