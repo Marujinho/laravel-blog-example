@@ -17,8 +17,8 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'PostController@index')->name('posts.index');
+
 
 /*
 *
@@ -57,4 +57,3 @@ Route::get('/ver-emails', 'EmailController@index')->name('emails.index');
 
 Route::post('/cadastrar-email', 'EmailController@store')->name('emails.store');
 
-// Route::get('/posts', 'PostController@list')->name('posts.list');

@@ -74,7 +74,8 @@ class PostController extends Controller
             $image = $request->file('pictureThumb');
             $imageName = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$imageName);
-            $image = Image::make($image)->resize(800,400)->save($location);
+            $image = Image::make($image)->resize(1000,500)->save($location);
+            // $image = Image::make($image)->crop(500, 200)->save($location);
             $post->pictureThumb = $imageName;
         }
 
