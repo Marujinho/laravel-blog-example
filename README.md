@@ -1,3 +1,8 @@
-# Blog simples com Laravel
+# Blog boilerplate with laravel
 
-Apenas um exemplo para iniciar um blog simplificado com laravel, sem repositórios ou outras coisas chiques.
+# installation
+Make sure you set the .env file according to your local database credentials.
+
+* composer install
+* php artisan migrate
+* php artisan serve
